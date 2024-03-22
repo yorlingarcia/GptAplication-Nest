@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 
 import {
+  AudioToTextDto,
   OrthograpyDto,
   ProsConsDiscuserDto,
   TextToAudioDto,
@@ -8,6 +9,7 @@ import {
 } from './dtos';
 import OpenAI from 'openai';
 import {
+  audioToTextUseCase,
   getAudioUseCase,
   orthograpyCheckUseCase,
   prosConsDiscuserStreamUseCase,
@@ -43,6 +45,13 @@ export class GptService {
 
   async textToAudio({ prompt, voice }: TextToAudioDto) {
     return await textToAudioUseCase(this.openai, { prompt, voice });
+  }
+
+  async audioToText(
+    audioFile: Express.Multer.File,
+    { prompt }: AudioToTextDto,
+  ) {
+    return await audioToTextUseCase(this.openai, { prompt, audioFile });
   }
 
   async getAudio(fileId: string) {
