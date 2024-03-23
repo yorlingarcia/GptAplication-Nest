@@ -20,13 +20,11 @@ export const imageGnerationUseCase = async (
     response_format: 'url',
   });
 
-  await downloadImageAsPng(response.data[0].url);
-
-  console.log(response);
+  const url = await downloadImageAsPng(response.data[0].url);
 
   return {
-    url: response.data[0].url,
-    localPath: '',
+    url,
+    openAiUrl: response.data[0].url,
     revised_prompt: response.data[0].revised_prompt,
   };
 };

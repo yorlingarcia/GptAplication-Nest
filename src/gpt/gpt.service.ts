@@ -62,7 +62,7 @@ export class GptService {
   }
 
   async imageGeneration(imageGenerationDto: ImageGenerationDto) {
-    return imageGnerationUseCase(this.openai, imageGenerationDto);
+    return await imageGnerationUseCase(this.openai, imageGenerationDto);
   }
 
   async getImage(fileName: string) {
