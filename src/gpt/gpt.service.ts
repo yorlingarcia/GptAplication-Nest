@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 
 import {
   AudioToTextDto,
+  ImageGenerateVariationDto,
   ImageGenerationDto,
   OrthograpyDto,
   ProsConsDiscuserDto,
@@ -14,6 +15,7 @@ import {
   getAudioUseCase,
   getImageUseCase,
   imageGnerationUseCase,
+  imageVariationUseCase,
   orthograpyCheckUseCase,
   prosConsDiscuserStreamUseCase,
   prosConsDiscuserUseCase,
@@ -67,5 +69,9 @@ export class GptService {
 
   async getImage(fileName: string) {
     return await getImageUseCase({ fileName });
+  }
+
+  generateImageVariation({ baseImage }: ImageGenerateVariationDto) {
+    return imageVariationUseCase(this.openai, { baseImage });
   }
 }
