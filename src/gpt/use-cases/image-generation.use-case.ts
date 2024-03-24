@@ -1,7 +1,6 @@
 import OpenAI from 'openai';
 import { downloadBase64ImageAsPng, downloadImageAsPng } from 'src/helpers';
 import * as fs from 'fs';
-import * as path from 'path';
 
 interface Options {
   prompt: string;
@@ -9,7 +8,7 @@ interface Options {
   maskImage?: string;
 }
 
-export const imageGnerationUseCase = async (
+export const imageGenerationUseCase = async (
   openAi: OpenAI,
   { prompt, originalImage, maskImage }: Options,
 ) => {

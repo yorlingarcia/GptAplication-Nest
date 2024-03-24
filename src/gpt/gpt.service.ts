@@ -14,7 +14,7 @@ import {
   audioToTextUseCase,
   getAudioUseCase,
   getImageUseCase,
-  imageGnerationUseCase,
+  imageGenerationUseCase,
   imageVariationUseCase,
   orthograpyCheckUseCase,
   prosConsDiscuserStreamUseCase,
@@ -64,7 +64,7 @@ export class GptService {
   }
 
   async imageGeneration(imageGenerationDto: ImageGenerationDto) {
-    return await imageGnerationUseCase(this.openai, imageGenerationDto);
+    return await imageGenerationUseCase(this.openai, imageGenerationDto);
   }
 
   async getImage(fileName: string) {
